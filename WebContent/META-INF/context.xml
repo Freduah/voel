@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <Context crossContext="true">
+ 
+    <!-- Default set of monitored resources -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+   
+      <Resource name="jdbc/VodaDB"
+        auth="Container"
+        type="javax.sql.DataSource"
+        factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+        validationQuery="SELECT 1"
+        validationInterval="30000"
+       
+        initialSize="10"        
+        maxActive="100" 
+        minIdle="10" 
+        maxWait="20000" 
+
+        suspectTimeout="60"
+        removeAbandonedTimeout="60"
+        removeAbandoned="true"
+		logAbandoned="true"
+        timeBetweenEvictionRunsMillis="30000" 
+        minEvictableIdleTimeMillis="30000"      
+        jmxEnabled="true"
+        
+        closeMethod="close"                    
+        jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;
+          org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer;
+          org.apache.tomcat.jdbc.pool.interceptor.ResetAbandonedTimer;
+          org.apache.tomcat.jdbc.pool.interceptor.SlowQueryReportJmx(threshold=10000)"
+        abandonWhenPercentageFull="50" 
+        
+        username="root"
+        password="back4gud"
+        driverClassName="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://localhost:3306/VodaDB?autoReconnect=true"/>
+                  
+</Context>
